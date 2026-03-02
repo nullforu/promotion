@@ -88,5 +88,19 @@ export default ({ onOpen }: { onOpen: (id: WindowId) => void }) => (
                 <div>보노보노 바이러스</div>
             </button>
         </div>
+        <p className='mt-8 mb-4 mx-10'>
+            자세한 내용은{' '}
+            <a href='https://null4u.cloud' target='_blank' className='text-blue-500 hover:underline'>
+                공식 홈페이지
+            </a>
+            에서도 확인하실 수 있습니다.
+        </p>
+        <p className='mt-4 mb-16 mx-10'>
+            &rarr;{' '}
+            <a href='https://null4u.cloud' target='_blank' className='text-blue-500 hover:underline'>
+                https://null4u.cloud
+            </a>{' '}
+            &larr;
+        </p>
     </div>
 )

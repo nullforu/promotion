@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react'
 interface Command {
     output: string
     clear?: boolean
+    exit?: boolean
 }
 
 const COMMANDS: Record<string, (args: string) => Command> = {
@@ -11,7 +12,9 @@ const COMMANDS: Record<string, (args: string) => Command> = {
   help        - Show this help message
   whoami      - Display current user
   echo        - Echo the input text
-  clear       - Clear the terminal screen`,
+  clear       - Clear the terminal screen
+  eval        - Evaluate JavaScript code (unsafe)
+  exit        - Close the page`,
     }),
     whoami: () => ({
         output: 'null4u',
@@ -25,6 +28,18 @@ const COMMANDS: Record<string, (args: string) => Command> = {
     clear: () => ({
         output: '',
         clear: true,
+    }),
+    eval: (args: string) => {
+        try {
+            const result = eval(args)
+            return { output: String(result) }
+        } catch (error) {
+            return { output: `Error: ${error instanceof Error ? error.message : String(error)}` }
+        }
+    },
+    exit: () => ({
+        output: '',
+        exit: true,
     }),
 }
 
@@ -59,6 +74,8 @@ export default () => {
             const result = commandFunc(args.join(' '))
             if (result.clear) {
                 setHistory([])
+            } else if (result.exit) {
+                window.close()
             } else {
                 setHistory((prev) => [...prev, { command: input, output: result.output }])
             }

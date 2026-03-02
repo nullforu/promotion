@@ -1,11 +1,8 @@
 import Markdown from '../components/Markdown'
 import ReadableText from '../components/ReadableText'
 
-export default () => (
-    <ReadableText>
-        <div className='text-[12px] leading-relaxed break-keep'>
-            <Markdown
-                content={`# 프로젝트 목록
+/*
+outdated 260301
 
 기본적으로 전공동아리 자체가 개인 프로젝트나 공부를 위주로 이루어지기 때문에, 동아리 차원에서 진행하는 공식적인 프로젝트는 많지 않습니다.
 
@@ -26,6 +23,15 @@ export default () => (
 
 이를 위해 외부 전문가 특강이나 멘토링을 진행하기도 하며, 좋은 실적을 거두기 위해 동아리 차원에서 지원하여 노력하고 있습니다.
 이에 대한 자세한 내용은 추후 따로 안내드리도록 하겠습니다.
+ */
+
+export default () => (
+    <ReadableText>
+        <div className='text-[12px] leading-relaxed break-keep'>
+            <Markdown
+                content={`# 프로젝트 목록
+
+자세한 내용은 [공식 홈페이지](https://null4u.cloud)의 프로젝트 목록이나 프로젝트 페이지에서 확인하실 수 있습니다.
 `}
             />
         </div>
